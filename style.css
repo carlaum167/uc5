@@ -1,0 +1,621 @@
+/* ========================================
+   CONFIGURAÇÕES GERAIS
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050507;
+    color: #c9ddce;
+    font-family: Georgia, "Times New Roman", serif;
+    min-height: 100vh;
+}
+
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+header {
+    min-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(57, 17, 78, 0.45),
+            transparent 50%
+        ),
+        linear-gradient(
+            #020203,
+            #09040d
+        );
+
+    border-bottom: 1px solid #3b1750;
+}
+
+
+.symbol {
+    font-size: 3rem;
+    color: #02bd1b;
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 10px #05ad1b,
+        0 0 30px #018108;
+}
+
+
+header h1 {
+    font-size: clamp(3rem, 8vw, 7rem);
+
+    letter-spacing: 8px;
+
+    text-transform: uppercase;
+
+    color: #ccebd5;
+
+    text-shadow:
+        0 0 10px #3c8f4b,
+        0 0 30px #1d4b2a,
+        0 0 60px rgba(29, 75, 42, 0.45);
+}
+
+
+header p {
+    max-width: 700px;
+
+    margin-top: 25px;
+
+    color: #86a58d;
+
+    font-size: 1.1rem;
+
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   NAVEGAÇÃO
+======================================== */
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    display: flex;
+    justify-content: center;
+
+    gap: 35px;
+
+    padding: 18px;
+
+    background: rgba(5, 5, 7, 0.9);
+
+    backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid #24132f;
+}
+
+
+nav a {
+    position: relative;
+
+    color: #7f9d86;
+
+    text-decoration: none;
+
+    text-transform: uppercase;
+
+    font-size: 0.8rem;
+
+    letter-spacing: 2px;
+
+    transition: color 0.3s ease;
+}
+
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: #a45bc1;
+
+    transition: width 0.3s ease;
+}
+
+
+nav a:hover {
+    color: #b2dfbc;
+}
+
+
+nav a:hover::after {
+    width: 100%;
+}
+
+
+/* ========================================
+   CONTEÚDO PRINCIPAL
+======================================== */
+
+main {
+    width: min(1200px, 90%);
+
+    margin: auto;
+
+    padding: 100px 0;
+}
+
+
+section {
+    scroll-margin-top: 100px;
+}
+
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 60px;
+}
+
+
+.section-title h2 {
+    color: #b7dfc1;
+
+    font-size: 2.5rem;
+
+    margin-bottom: 15px;
+}
+
+
+.section-title p {
+    color: #667b6b;
+}
+
+
+/* ========================================
+   GRID DE CRIATURAS
+======================================== */
+
+.creatures {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+        );
+
+    gap: 30px;
+}
+
+
+/* ========================================
+   CARD DA CRIATURA
+======================================== */
+
+.creature {
+    position: relative;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            #110d14,
+            #08080a
+        );
+
+    border: 1px solid #2c1936;
+
+    border-radius: 8px;
+
+    transition:
+        transform 0.4s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.creature::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 1px;
+
+    background: #a45bc1;
+
+    transition: left 0.5s ease;
+}
+
+
+.creature:hover::before {
+    left: 100%;
+}
+
+
+.creature:hover {
+    transform: translateY(-10px);
+
+    border-color: #75458c;
+
+    box-shadow:
+        0 15px 50px rgba(93, 35, 120, 0.25);
+}
+
+
+/* ========================================
+   IMAGEM DA CRIATURA
+======================================== */
+
+.creature-image {
+    height: 180px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(103, 44, 133, 0.35),
+            transparent 65%
+        ),
+        #060609;
+
+    font-size: 5rem;
+
+    color: #5ca56b;
+
+    transition:
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+
+.creature-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 12px;
+}
+
+
+.creature:hover .creature-image {
+    transform: scale(1.08);
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(151, 72, 190, 0.5)
+        );
+}
+
+
+/* ========================================
+   CONTEÚDO DO CARD
+======================================== */
+
+.creature-content {
+    padding: 28px;
+
+    background: rgba(7, 6, 10, 0.92);
+
+    border-top: 1px solid #1d1224;
+}
+
+
+.creature:focus-visible {
+    outline: 2px solid #a45bc1;
+    outline-offset: 3px;
+}
+
+
+.classification {
+    display: block;
+
+    color: #74b582;
+
+    font-size: 0.75rem;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+}
+
+
+.creature h3 {
+    color: #caecd2;
+
+    font-size: 1.5rem;
+
+    margin-bottom: 15px;
+}
+
+
+.creature p {
+    color: #7f9c86;
+
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   NÍVEL DE PERIGO
+======================================== */
+
+.danger {
+    margin-top: 20px;
+
+    padding-top: 15px;
+
+    border-top: 1px solid #25172c;
+
+    color: #97d2a3;
+
+    font-size: 0.8rem;
+
+    letter-spacing: 1px;
+}
+
+
+/* ========================================
+   SEÇÃO SOBRE
+======================================== */
+
+.about {
+    max-width: 800px;
+
+    margin: 120px auto 0;
+
+    text-align: center;
+
+    padding: 50px;
+
+    background: #0a080d;
+
+    border: 1px solid #24172c;
+
+    position: relative;
+}
+
+
+.about::before,
+.about::after {
+    content: "✦";
+
+    position: absolute;
+
+    color: #4f8f5e;
+
+    font-size: 1.2rem;
+}
+
+
+.about::before {
+    top: 20px;
+    left: 25px;
+}
+
+
+.about::after {
+    bottom: 20px;
+    right: 25px;
+}
+
+
+.about h2 {
+    color: #bde6c7;
+
+    margin-bottom: 25px;
+}
+
+
+.about p {
+    color: #7f9c86;
+
+    line-height: 2;
+}
+
+
+.about .quote {
+    margin-top: 25px;
+
+    color: #9dd2a8;
+}
+
+
+/* ========================================
+   RODAPÉ
+======================================== */
+
+footer {
+    text-align: center;
+
+    padding: 50px 20px;
+
+    border-top: 1px solid #201426;
+
+    color: #5f7f67;
+
+    font-size: 0.8rem;
+
+    letter-spacing: 1px;
+}
+
+
+footer span {
+    color: #63a172;
+
+    margin: 0 8px;
+}
+
+
+/* ========================================
+   MODAL DE IMAGEM
+======================================== */
+
+.image-modal {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    background: rgba(2, 1, 4, 0.92);
+
+    z-index: 99;
+}
+
+
+.image-modal.active {
+    display: flex;
+}
+
+
+.image-modal-content {
+    position: relative;
+
+    width: min(92vw, 1000px);
+
+    padding: 16px;
+
+    border: 1px solid #4a2b5b;
+    border-radius: 10px;
+
+    background: #09070d;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+}
+
+
+.image-modal-content img {
+    width: 100%;
+    max-height: 80vh;
+
+    object-fit: contain;
+
+    border-radius: 6px;
+}
+
+
+.image-modal-close {
+    position: absolute;
+
+    top: 8px;
+    right: 10px;
+
+    border: 0;
+    background: transparent;
+
+    color: #c7e7cf;
+
+    font-size: 2rem;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+
+#image-modal-caption {
+    margin-top: 10px;
+
+    color: #9ecfac;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
+
+@media (max-width: 600px) {
+
+    header {
+        min-height: 70vh;
+    }
+
+
+    header h1 {
+        font-size: 2.5rem;
+
+        letter-spacing: 4px;
+    }
+
+
+    header p {
+        font-size: 0.95rem;
+    }
+
+
+    nav {
+        gap: 15px;
+    }
+
+
+    nav a {
+        font-size: 0.65rem;
+    }
+
+
+    main {
+        width: 92%;
+
+        padding: 70px 0;
+    }
+
+
+    .section-title h2 {
+        font-size: 2rem;
+    }
+
+
+    .about {
+        padding: 35px 20px;
+
+        margin-top: 80px;
+    }
+
+}
